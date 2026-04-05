@@ -140,7 +140,7 @@ class AIImageUtil:
             print(f"\n[{item['slug']}] -> OBJETO: {obj}")
             time.sleep(0.5)
 
-if __name__ == "__main__":
+def main():
     import argparse
     parser = argparse.ArgumentParser(description="AI Image Description Utility")
     parser.add_argument("--config", default="config.yaml", help="Arquivo de configuração")
@@ -149,7 +149,7 @@ if __name__ == "__main__":
     
     args = parser.parse_args()
     
-    # Resolve caminhos
+    # Resolve caminhos relativos ao script
     script_dir = Path(__file__).parent.parent
     config_path = (script_dir / args.config).resolve()
     content_path = (script_dir / args.content).resolve()
@@ -157,3 +157,6 @@ if __name__ == "__main__":
     
     util = AIImageUtil(config_path, content_path, output_path)
     util.process()
+
+if __name__ == "__main__":
+    main()
